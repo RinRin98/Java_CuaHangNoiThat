@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="mt-side-menu">
+
+    <!-- mt holder start here -->
+    <div class="mt-holder" id="forgotPasswordContainer">
+        <a href="#" onclick="back(event)" class="side-close"><span></span><span></span></a>
+        <strong class="mt-side-title">RESET PASSWORD</strong>
+        <!-- mt side widget start here -->
+        <div class="mt-side-widget">
+            <header>
+                <span class="mt-side-subtitle">please enter email</span>
+            </header>
+            <form action="#" class="login-form">
+                <fieldset>
+                    <input type="text" name="email" placeholder="email" class="input">
+
+                    <button type="submit" onclick="sendOTP(event)" class="btn-type1">Send OTP</button>
+                    <button type="submit" onclick="back(event)" class="btn-type1">Back</button>
+
+
+                </fieldset>
+            </form>
+        </div>
+        <!-- mt side widget end here -->
+        <div class="or-divider"><span class="txt">OTP</span></div>
+        <!-- mt side widget start here -->
+        <div class="mt-side-widget">
+            <header>
+                <span class="mt-side-subtitle">Reset password</span>
+            </header>
+            <form action="#" class="register-form">
+                <fieldset>
+                    <input type="text" name="otp" placeholder="otp" class="input">
+                    <input type="password" name="newpassword" placeholder="newpassword" class="input">
+                    <button type="submit" onclick="resetpass(event)" class="btn-type1">Submit</button>
+                </fieldset>
+            </form>
+        </div>
+        <!-- mt side widget end here -->
+    </div>
+    <!-- mt holder end here -->
+    <script th:inline="javascript">
+
+</script>
+</div>
+
+</html>

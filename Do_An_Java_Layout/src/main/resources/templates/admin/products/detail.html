@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout.html :: layout}">
+
+<body th:fragment="content">
+
+<main id="mt-main">
+    <!-- Mt Product Detial of the Page -->
+    <section class="mt-product-detial wow fadeInUp" data-wow-delay="0.4s">
+        <div class="container">
+            <div class="row">
+                <div >
+
+                    <!-- Slider of the Page -->
+                    <div class="col-xs-3">
+
+                        <!-- Product Slider of the Page -->
+                        <div style="padding-top:30px;">
+                            <div class="slide">
+                                <img id="big-image" height="300" width="240" th:src="@{/images/bg/img15.jpg}" alt="image description">
+                            </div>
+                        </div>
+                        <!-- Product Slider of the Page end -->
+
+                    </div>
+                    <!-- Slider of the Page end -->
+                    <!-- Detail Holder of the Page -->
+                    <div class="col-xs-3" >
+
+                        <div class="product-slider">
+                            <form  class="add-form" action="#">
+                                <fieldset>
+                                    <input type="file" class="input" name="imageProduct" id="image" accept="image/jpeg, image/png" placeholder="image" multiple>
+                                    <button type="submit" onclick="addImg(event)" class="btn-type1">Create</button>
+                                </fieldset>
+                            </form>
+
+                        </div>
+                        <!-- Pagg Slider of the Page -->
+                        <ul class="list-unstyled slick-slider pagg-slider" id="images-of-product"><!--***-->
+                        </ul><!-- Pagg Slider of the Page end -->
+
+                        <!-- Pagg Slider of the Page end -->
+                    </div>
+                    <!-- Detail Holder of the Page end -->
+
+                </div>
+
+                <div class="col-xs-6">
+                    <div>
+                        <div class="holder" style="margin: 0;">
+                            <div class="mt-side-widget" >
+                                <form  class="edit-form" action="#">
+                                    <fieldset>
+                                        <input type="text" name="ProductName" placeholder="Product Name" class="input">
+                                        <textarea name="Title" rows="4" cols="50" placeholder="Description" class="input" style="height:auto;"></textarea>
+
+                                        <input type="number" name="Price" placeholder="Price" class="input">
+                                        <input type="number" name="Quantity" placeholder="Stored quantity" class="input">
+
+                                        <select id="add-product-select-category" class="input">
+                                            <option class="input" value="">--Select category--</option>
+
+                                        </select>
+                                        <button type="submit" onclick="edit(event)" class="btn-type1">Save</button>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Breadcrumbs of the Page -->
+
+                    <!-- Product Form of the Page end -->
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- Mt Product Detial of the Page end -->
+</main><!-- mt main end here -->
+    <script th:inline="javascript">
+const urlParams = new URLSearchParams(window.location.search);
+const product_id = urlParams.get('id');
+
+
+document.addEventListener("DOMContentLoaded", function() {
+      var preloader = document.getElementById("pre-loader");
+      if (preloader) {
+        preloader.remove();
+      }
+    });
+
+
+
+    const bigImg = document.querySelector('#big-image');
+    const name = document.querySelector('input[name="ProductName"]');
+    const title = document.querySelector('textarea[name="Title"]');
+    const price = document.querySelector('input[name="Price"]');
+    const quantity = document.querySelector('input[name="Quantity"]');
+    const select_category = document.querySelector('select[id="add-product-select-category"]');
+
+
+    const ul = document.querySelector('#images-of-product');
+    ul.innerHTML = '';
+
+    fetch('http://localhost:9999/products/'+product_id)
+    .then(response => {
+      if (response.ok) {
+        // Đăng ký thành công
+        return response.json();
+      } else {
+        // Xử lý khi đăng ký thất bại, ví dụ hiển thị thông báo lỗi
+        throw new Error("Get Product failed");
+      }
+    })
+      .then(product => {
+          name.value=product.name;
+          title.value=product.title;
+          price.value = product.price;
+          quantity.value=product.soLuong;
+
+          fetch(`http://localhost:9999/categories`)
+            .then(response => response.json())
+            .then(categories => {
+              var html = categories.map(category => {
+              if(product.category.id==category.id){
+                return `<option selected value="${category.id}">${category.name}</option>`;
+              }
+                return `<option value="${category.id}">${category.name}</option>`;
+              }).join('');
+              select_category.innerHTML += html;
+
+            })
+            .catch(error => {
+              console.log(error);
+            });
+
+
+          fetch('http://localhost:9999/images/' + product.id)
+          .then(response=>{return response.json();})
+          .then(images=>{
+              var image = '/images/bg/img15.jpg';
+              if( images.length>0){
+                  bigImg.src ='/images/product/'+images[0].image.replaceAll(" ", "%20");
+              }
+              for (let i = 0; i < images.length; i++) {
+                  var eachImage = images[i];
+                  image = '/images/product/'+images[i].image.replaceAll(" ", "%20");
+                  ul.innerHTML+='<li><div class="b2 img"><img src="'+image+'" alt="image description" width="46px" height="46px"><a href="#" onclick="deleteImg(this,event,'+images[i].id+')"><i class="fa fa-close"></i><a></div></li>';
+              }
+              setInterval(function() {
+                  var imgElements = ul.getElementsByTagName('img');
+                  for (var i = 0; i < imgElements.length; i++) {
+                    imgElements[i].addEventListener('mouseover', function() {
+                      bigImg.src = this.src;
+                    });
+                  }
+                }, 1000);
+
+          })
+          .catch(error => {
+           // Xử lý lỗi nếu có
+           console.error('Lỗi:', error);
+          });
+
+
+
+
+    })
+    .catch(error => {
+         // Xử lý lỗi nếu có
+         console.error('Lỗi:', error);
+    });
+
+function edit(event) {
+  event.preventDefault(); // Ngăn chặn hành động mặc định của form
+
+  try {
+    if (select_category.value == '') {
+      throw new Error("Please choose category");
+    }
+
+    var data = {
+       id: product_id,
+      name: name.value,
+      title: title.value,
+      price: price.value,
+      soLuong: quantity.value,
+      category_id: select_category.value
+    };
+
+    // Gửi yêu cầu đăng ký đến server bằng fetch API
+    fetch('http://localhost:9999/products/'+product_id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => {
+        if (response.ok) {
+          // Đăng ký thành công
+          return response.json();
+        } else {
+          // Xử lý khi đăng ký thất bại, ví dụ hiển thị thông báo lỗi
+          throw new Error("Add failed");
+        }
+      })
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        // Xử lý khi có lỗi xảy ra, ví dụ hiển thị thông báo lỗi
+        console.log(error);
+      });
+  } catch (error) {
+    console.log(error);
+  }
+}
+function deleteImg(link,event,imgId){
+    event.preventDefault();
+    fetch('http://localhost:9999/images/'+imgId, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response=>{
+        console.log( response.json());
+        if(response.ok){
+            link.parentNode.parentNode.remove();
+        }
+        else{
+        alert('Lỗi');
+        }
+    });
+
+}
+function addImg(event){
+    event.preventDefault();
+    var formData = new FormData();
+
+        // Append each image file to the FormData object
+        var inputImageFiles = document.getElementById('image');
+        console.log(inputImageFiles);
+        console.log(inputImageFiles.value);
+        console.log(inputImageFiles.files);
+
+        for (var i = 0; i < inputImageFiles.files.length; i++) {
+          formData.append('imageProduct', inputImageFiles.files[i]);
+        }
+
+        // Send the multipart request to the server
+        fetch('http://localhost:9998/products/inputImages', {
+          method: 'POST',
+          body: formData
+        })
+          .then(response=>{return response.json();})
+          .then(imageFiles => {
+            // Lưu mảng kết quả vào biến imageFiles
+            console.log(imageFiles); // In ra mảng kết quả
+
+            for (let i = 0; i < imageFiles.length; i++) {
+              var eachImageFile = imageFiles[i];
+              var formData1 = new FormData();
+
+                fetch('http://localhost:9999/images', {
+                  method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json', // Set the correct content type here
+                    },
+                    body: JSON.stringify({ image: eachImageFile, product_id: product_id }),
+                  })
+                  .then(response=>{
+                    if(response.ok){
+                    return response.json();
+                    }
+                  })
+                    .then(image=>{
+                        console.log(image);
+                        imageSrc = '/images/product/'+image.image.replaceAll(" ", "%20");
+                        ul.innerHTML+='<li><div class="b2 img"><img src="'+imageSrc+'" alt="image description" width="46px" height="46px"><a href="#" onclick="deleteImg(this,event,'+image.id+')"><i class="fa fa-close"></i><a></div></li>';
+                    })
+                    .catch(error => {
+                      // Handle any network or other errors
+                    });
+
+          }})
+          .catch(error => {
+            // Xử lý lỗi nếu có
+            console.error('Lỗi:', error);
+          });
+}
+</script>
+<!-- include the site stylesheet -->
+
+</body>
+</html>

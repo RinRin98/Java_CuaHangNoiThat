@@ -1,0 +1,7 @@
+(ROLE= USER)
+username: nhen19
+password: 123
+
+(ROLE= ADMIN)
+username: QDUYET1
+password: 123

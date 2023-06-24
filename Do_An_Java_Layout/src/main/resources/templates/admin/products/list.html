@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout.html :: layout}">
+
+<body th:fragment="content">
+        <main id="mt-main">
+            <!-- Mt Content Banner of the Page -->
+            <section class="mt-contact-banner" style="background-image: url(/images/bg/img43.jpg);">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <h1>List Products</h1>
+                            <nav class="breadcrumbs">
+                                <ul class="list-unstyled">
+                                    <li><a th:href=@{/}>home <i class="fa fa-angle-right"></i></a></li>
+                                    <li>List Products</li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Mt Content Banner of the Page end -->
+            <!-- Mt About Section of the Page -->
+            <!-- Mt About Section of the Page -->
+            <!-- Mt Detail Section of the Page -->
+            <div class="container">
+                <div class="row">
+                    <aside id="sidebar" class="col-xs-12 col-sm-4 col-md-3 wow fadeInLeft" data-wow-delay="0.4s">
+                        <!-- shop-widget filter-widget of the Page start here -->
+
+                        <section class="shop-widget">
+                            <h2>CATEGORIES</h2>
+                            <!-- category list start here -->
+                            <ul class="list-unstyled category-list">
+                                <!--                <li>-->
+                                <!--                  <a href="#">-->
+                                <!--                    <span class="name">CHAIRS</span>-->
+                                <!--                    <span class="num">12</span>-->
+                                <!--                  </a>-->
+                                <!--                </li>-->
+                            </ul><!-- category list end here -->
+                        </section><!-- shop-widget of the Page end here -->
+                        <!-- shop-widget of the Page start here -->
+                    </aside>
+                    <section class="mt-detail-sec toppadding-zero" >
+                        <!--                <div class="mt-product-table">-->
+
+
+                        <div class="container col-xs-11 col-sm-8 col-md-9 wow fadeInRight" data-wow-delay="0.4s">
+
+                            <div class="row border">
+                                <div class="col-xs-12 col-sm-2">
+                                    <strong class="title">ID</strong>
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <strong class="title">NAME</strong>
+                                </div>
+                                <div class="col-xs-12 col-sm-2">
+                                    <strong class="title">PRICE</strong>
+                                </div>
+                                <div class="col-xs-12 col-sm-2">
+                                    <strong class="title">QUANTITY</strong>
+                                </div>
+                                <div class="col-xs-12 col-sm-1">
+                                    <strong class="title"></strong>
+                                </div>
+                            </div>
+                            <div class="mt-textbox">
+                                <p id="p-offset">Showing  <strong></span>1–9</strong> of  <strong>65</strong> results</p>
+                            </div><!-- mt-textbox end here -->
+                            <div class="mt-textbox">
+                                <a th:href="@{/admin/products/add}"><i class="fa fa-plus-circle"></i>Create new</a>
+                            </div>
+                            <div id="mt-admin-product-lists">
+
+                            </div>
+                            <nav class="mt-pagination">
+                                <ul class="list-inline">
+                                </ul>
+                            </nav><!-- mt pagination end here -->
+
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </main><!-- Main of the Page end -->
+<script th:src="@{/js/action/admin/products.js}"></script>
+</body>
+
+</html>

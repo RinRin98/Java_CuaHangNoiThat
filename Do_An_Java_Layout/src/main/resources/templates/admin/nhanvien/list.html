@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout.html :: layout}">
+
+<body th:fragment="content">
+<main id="mt-main">
+    <!-- Mt Content Banner of the Page -->
+    <section class="mt-contact-banner" style="background-image: url(/images/bg/img43.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h1>Danh sách nhân viên</h1>
+                    <nav class="breadcrumbs">
+                        <ul class="list-unstyled">
+                            <li><a th:href=@{/}>home <i class="fa fa-angle-right"></i></a></li>
+                            <li>Danh sách nhân viên</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Mt Content Banner of the Page end -->
+    <!-- Mt About Section of the Page -->
+    <!-- Mt About Section of the Page -->
+    <!-- Mt Detail Section of the Page -->
+    <div class="mt-product-table col-xs-12" style="max-height: 700px; overflow-y: auto;">
+        <div class="container col-xs-6" id="mt-nhanvien-person" >
+
+        </div>
+
+        <div class="container col-xs-6" id="mt-nhanvien-person2" >
+
+        </div>
+    </div>
+</main><!-- Main of the Page end -->
+<script>
+async function rowOne(nhanvienPerson) {
+console.log(nhanvienPerson);
+    const listRoles = await fetch('http://localhost:9999/roles')
+        .then(response => response.json());
+
+    var options_Roles = listRoles.map(role => {
+        if (nhanvienPerson.user){
+            if (nhanvienPerson.user.role.idRole == role.idRole){
+                return `<option value="${role.idRole}" selected>${role.roleName}</option>`;
+            }else {
+                return `<option value="${role.idRole}">${role.roleName}</option>`;
+            }
+        }
+         return ``;
+    }).join('');
+
+    var img = '/images/bg/staff.jpg';
+    if (nhanvienPerson.gioiTinh == true) {
+        img = '/images/bg/men.jpg';
+    } else if (nhanvienPerson.gioiTinh == false) {
+        img = '/images/bg/women.jpg';
+    }
+
+    return `<div id="rowOne${nhanvienPerson.idNV}">
+                <article class="mt-author-box">
+                  <div class="author-img">
+                    <img style="max-width:100px; max-height:150px;" src="${img}" alt="image description">
+                    <button onclick="/admin/nhanvien/edit?id=${nhanvienPerson.idNV}">Edit</button>
+                  </div>
+
+                  <div class="author-txt">
+                    <h3><strong>${nhanvienPerson.hoten}</strong></h3>
+                    <i class="fa fa-smile-o"></i><h3>${nhanvienPerson.chucVu?nhanvienPerson.chucVu.tenCV:""}</h3>
+                    <p><i class="icon-home"></i>475A Điện Biên Phủ - Phường 25 - Bình Thạnh - TP.HCM</p>
+                    <p><i class="icon-home"></i>HUTECH E Campus - Khu CNC - TP.Thủ Đức - TP.HCM</p>
+                    <ul class="list-unstyled social-network">
+                      <li><i class="fa fa-phone"></i><strong>${nhanvienPerson.sdt}</strong></li>
+                      <li><i class="fa fa-mail-reply"></i><strong>${nhanvienPerson.email}</strong></li>
+                      <li><i class="fa fa-users"></i>
+                        <select id="select${nhanvienPerson.idNV}" onchange="updateRole(${nhanvienPerson.idNV},${nhanvienPerson.user?nhanvienPerson.user.id:null})">
+                            ${options_Roles}
+                        </select>
+                      </li>
+                    </ul>
+                  </div>
+                </article>
+              </div>`;
+}
+
+async function showList() {
+    const ul = document.querySelector('#mt-nhanvien-person');
+    const ul2 = document.querySelector('#mt-nhanvien-person2');
+
+    const response = await fetch('http://localhost:9999/nhanvien');
+    const list = await response.json();
+
+    for (let i = 0; i < list.length; i++) {
+        const nv = list[i];
+        const html = await rowOne(nv);
+        if (i > list.length / 2) {
+            ul2.insertAdjacentHTML('beforeend', html);
+        } else {
+            ul.insertAdjacentHTML('beforeend', html);
+        }
+    }
+}
+
+showList();
+
+
+function updateRole(idNV, idUser) {
+    if (idUser == null) {
+        return;
+    }
+    const idRole = document.getElementById('select' + idNV).value;
+    fetch('http://localhost:9999/api/v1/user/updateRole?userId=' + idUser + '&idRole=' + idRole, {
+        method: 'PUT'
+    })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                alert('Thất bại');
+            }
+        }).then(result=>{console.log(result);});
+}
+
+</script>
+</body>
+
+</html>

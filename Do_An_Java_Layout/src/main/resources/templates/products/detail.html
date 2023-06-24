@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout.html :: layout}">
+
+<body th:fragment="content">
+
+<main id="mt-main">
+    <!-- Mt Product Detial of the Page -->
+    <section class="mt-product-detial wow fadeInUp" data-wow-delay="0.4s">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- Slider of the Page -->
+                    <div class="slider">
+                        <!-- Comment List of the Page -->
+                        <ul class="list-unstyled comment-list">
+                            <li><a href="#"><i class="fa fa-heart"></i>27</a></li>
+                            <li><a href="#"><i class="fa fa-comments"></i>12</a></li>
+                            <li><a href="#"><i class="fa fa-share-alt"></i>14</a></li>
+                        </ul>
+                        <!-- Comment List of the Page end -->
+                        <!-- Product Slider of the Page -->
+                        <div class="product-slider">
+                            <div class="slide">
+                                <img id="big-image" height="610px" width="490px" th:src="@{/images/bg/img15.jpg}" alt="image description">
+                            </div>
+                        </div>
+                        <!-- Product Slider of the Page end -->
+                        <!-- Pagg Slider of the Page -->
+                        <ul class="list-unstyled slick-slider pagg-slider" id="images-of-product"><!--***-->
+                        </ul>
+
+
+                        <!-- Pagg Slider of the Page end -->
+                    </div>
+                    <!-- Slider of the Page end -->
+                    <!-- Detail Holder of the Page -->
+                    <div class="detial-holder">
+                        <!-- Breadcrumbs of the Page -->
+                        <ul class="list-unstyled breadcrumbs">
+                            <li><a href="#">Chairs <i class="fa fa-angle-right"></i></a></li>
+                            <li>Products</li>
+                        </ul>
+                        <!-- Breadcrumbs of the Page end -->
+                        <h2 id="product-name">KAILA FABRIC CHAIR</h2>
+                        <!-- Rank Rating of the Page -->
+                        <div class="rank-rating">
+                            <ul class="list-unstyled rating-list">
+                                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                            </ul>
+                            <span class="total-price">Reviews (12)</span>
+                        </div>
+                        <!-- Rank Rating of the Page end -->
+                        <ul class="list-unstyled list">
+                            <li><a href="#"><i class="fa fa-share-alt"></i>SHARE</a></li>
+                            <li><a href="#"><i class="fa fa-exchange"></i>COMPARE</a></li>
+                            <li><a href="#"><i class="fa fa-heart"></i>ADD TO WISHLIST</a></li>
+                        </ul>
+                        <div class="txt-wrap">
+                            <p id="title1">Koila is a chair designed for restaurants and food lovers in general. Designed in collaboration with restaurant professionals, it ensures comfort and an ideal posture, as there are armrests on both sides of the chair.</p>
+                            <p id="title2">Koila is a seat designed for restaurants and gastronomic places in general. Designed in collaboration with professional of restaurants and hotels field, this armchair is composed of a curved shell with a base in oak who has pinched the back upholstered in fabric or leather. It provides comfort and holds for ideal sitting position,the arms may rest on the sides ofthe armchair.</p>
+                        </div>
+                        <div class="text-holder">
+                            <span id="show-price" class="price">$ 79.00 <del>399,00</del></span>
+                        </div>
+                        <!-- Product Form of the Page -->
+                        <form action="#" class="product-form">
+                            <fieldset>
+                                <div class="row-val">
+                                    <label for="qty">qty</label>
+                                    <input type="number" id="qty" placeholder="1" min="1" max="100">
+
+                                </div>
+                                <div class="row-val">
+                                    <label id="show-storedQuantity">100</label>
+                                </div>
+                                <div class="row-val">
+                                    <button type="button" id="AddToCart">ADD TO CART</button>
+                                </div>
+
+                            </fieldset>
+                        </form>
+                        <!-- Product Form of the Page end -->
+                    </div>
+                    <!-- Detail Holder of the Page end -->
+                </div>
+            </div>
+        </div>
+    </section><!-- Mt Product Detial of the Page end -->
+    <div class="product-detail-tab wow fadeInUp" data-wow-delay="0.4s">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="mt-tabs text-center text-uppercase">
+                        <li><a href="#tab1" class="active">DESCRIPTION</a></li>
+                        <li><a href="#tab2">INFORMATION</a></li>
+                        <li><a href="#tab3">REVIEWS (12)</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab1">
+                            <p id="tab1-title1">Koila is a chair designed for restaurants and food lovers in general. Designed in collaboration with restaurant professionals, it ensures comfort and an ideal posture, as there are armrests on both sides of the chair.</p>
+                            <p id="tab1-title2">Koila is a seat designed for restaurants and gastronomic places in general. Designed in collaboration with professional of restaurants and hotels field, this armchair is composed of a curved shell with a base in oak who has pinched the back upholstered in fabric or leather. It provides comfort and holds for ideal sitting position,the arms may rest on the sides ofthe armchair.</p>
+                            <p id="tab1-other"></p>
+                        </div>
+                        <div id="tab2">
+                            <p id="other"></p>
+                            <ul>
+                                <li>Chất liệu: Vải cao cấp</li>
+                                <li>Kích thước: 120cm x 80cm x 90cm</li>
+                                <li>Bảo hành: 2 năm</li>
+                                <li>Màu sắc: Xám</li>
+                                <li>Trọng lượng: 10kg</li>
+                                <li>Độ dày: 5cm</li>
+                                <li>Loại sản phẩm: Ghế sofa</li>
+                                <li>Xuất xứ: Việt Nam</li>
+                                <li>Phong cách: Hiện đại</li>
+                            </ul>
+
+                        </div>
+                        <div id="tab3">
+                            <div class="product-comment">
+                                <div class="mt-box">
+                                    <div class="mt-hold">
+                                        <ul class="mt-star">
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star-o"></i></li>
+                                        </ul>
+                                        <span class="name">John Wick</span>
+                                        <time datetime="2023-01-01">09:10 Nov, 19 2022</time>
+                                    </div>
+                                    <p>Good quality. Fast delivery.</p>
+                                </div>
+                                <div class="mt-box">
+                                    <div class="mt-hold">
+                                        <ul class="mt-star">
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star-o"></i></li>
+                                            <li><i class="fa fa-star-o"></i></li>
+                                        </ul>
+                                        <span class="name">John Wick</span>
+                                        <time datetime="2023-01-01">09:10 May, 19 2023</time>
+                                    </div>
+                                    <p>Nice price. Best service</p>
+                                </div>
+                                <form action="#" class="p-commentform">
+                                    <fieldset>
+                                        <h2>Add  Comment</h2>
+                                        <div class="mt-row">
+                                            <label>Rating</label>
+                                            <ul class="mt-star">
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star-o"></i></li>
+                                                <li><i class="fa fa-star-o"></i></li>
+                                            </ul>
+                                        </div>
+                                        <div class="mt-row">
+                                            <label>Name</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="mt-row">
+                                            <label>E-Mail</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="mt-row">
+                                            <label>Review</label>
+                                            <textarea class="form-control"></textarea>
+                                        </div>
+                                        <button type="button" class="btn-type4">ADD REVIEW</button>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- related products start here -->
+    <div class="related-products wow fadeInUp" data-wow-delay="0.4s">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>RELATED PRODUCTS</h2>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <!-- mt product1 center start here -->
+                            <div id="rand-hot-sale"></div>
+                            <!-- mt product1 center start here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- related products end here -->
+    </div>
+</main><!-- mt main end here -->
+<!--    <script th:inline="javascript">-->
+<script th:inline="javascript">
+const urlParams = new URLSearchParams(window.location.search);
+const product_id = urlParams.get('id');
+    const bigImg = document.querySelector('#big-image');
+
+    const productName = document.querySelector('#product-name');
+    const title1 = document.querySelector('#title1');
+    const title2 = document.querySelector('#title2');
+    const t1 = document.querySelector('#tab1-title1');
+    const t2 = document.querySelector('#tab1-title2');
+    const showPrice= document.querySelector('#show-price');
+    const showQ= document.querySelector('#show-storedQuantity');
+    const inputQty= document.querySelector('#qty');
+    const pother = document.querySelector('#other');
+    const btnAddCart = document.querySelector('#AddToCart');
+    pother.innerHTML = OTHER;
+    const ptab1other = document.querySelector('#tab1-other');
+    ptab1other.innerHTML = OTHER;
+
+
+    const ul = document.querySelector('#images-of-product');
+    ul.innerHTML = '';
+
+    fetch('http://localhost:9999/products/'+product_id)
+    .then(response => {
+      if (response.ok) {
+        // Đăng ký thành công
+        return response.json();
+      } else {
+        // Xử lý khi đăng ký thất bại, ví dụ hiển thị thông báo lỗi
+        throw new Error("Get Product failed");
+      }
+    })
+      .then(product => {
+          productName.innerHTML=product.name;
+          t1.innerHTML=product.title;
+          title1.innerHTML=product.title;
+          t2.innerHTML = generate_title2(product.category.name.toUpperCase());
+          title2.innerHTML=generate_title2(product.category.name.toUpperCase());
+          var divalertparent = document.querySelector('.detial-holder');
+          if(divalertparent){
+            divalertparent.setAttribute('id', 'alert-parent'+product.id);
+            divalertparent.classList.add('alert-parent');
+          }
+          showPrice.innerHTML = formatCurrency(product.price) + ' <del>' + formatCurrency(round1000(product.price * 1.5)) + '</del>';
+            showQ.innerHTML = 'Available: ' + product.soLuong;
+          if(product.soLuong==0) {
+              btnAddCart.innerHTML = 'HẾT HÀNG';
+              btnAddCart.style.cursor = 'not-allowed';
+              btnAddCart.disabled = true;
+              inputQty.value=inputQty.placeholder=inputQty.min=inputQty.max='0';
+              inputQty.readonly=true;
+              }
+              else{
+              inputQty.max=product.soLuong;
+              }
+
+
+
+          fetch('http://localhost:9999/images/' + product.id)
+          .then(response=>{return response.json();})
+          .then(images=>{
+              var image = '/images/bg/img15.jpg';
+              var img_cart;
+              if( images.length>0){
+                  bigImg.src ='/images/product/'+images[0].image.replaceAll(" ", "%20");
+                  image='/images/product/'+images[0].image.replaceAll(" ", "%20");
+                  img_cart=images[0].image.replaceAll(" ", "%20");
+              }
+              btnAddCart.addEventListener('click', function(event) {
+                  var qty = parseInt(inputQty.value);
+                  handleAddToCartQ(event, product.id, product.name, product.price, img_cart, qty);
+                });
+              for (let i = 0; i < images.length; i++) {
+                  var eachImage = images[i];
+                  image = '/images/product/'+images[i].image.replaceAll(" ", "%20");
+                  ul.innerHTML+='<li><div class="img"><img src="'+image+'" alt="image description" width="105px" height="105px"></div></li>';
+
+              }
+              setInterval(function() {
+                  var imgElements = ul.getElementsByTagName('img');
+                  for (var i = 0; i < imgElements.length; i++) {
+                    imgElements[i].addEventListener('mouseover', function() {
+                      bigImg.src = this.src;
+                    });
+                  }
+                }, 1000);
+
+          })
+          .catch(error => {
+           // Xử lý lỗi nếu có
+           console.error('Lỗi:', error);
+          });
+
+
+
+
+    })
+    .catch(error => {
+         // Xử lý lỗi nếu có
+         console.error('Lỗi:', error);
+    });
+getProductsHome('#rand-hot-sale');
+function getProductsHome(idtab) {
+  var linkGetProducts = 'http://localhost:9999/products/home/5';
+  var tabsSlider = document.querySelector(idtab);
+  tabsSlider.innerHTML='';
+
+  fetch(linkGetProducts)
+    .then(response => response.json())
+    .then(products => {
+      var slideCount = 0; // Số lượng slide đã tạo
+      var chan=0;
+      var imagePromises = []; // Mảng chứa các promise của việc tải ảnh
+
+      products.forEach((product, index) => {
+        const imagePromise = fetch('http://localhost:9999/images/' + product.id)
+          .then(response => response.json())
+          .then(images => {
+            if (images.length > 0) {
+              const image = images[0].image.replaceAll(" ", "%20");
+              const productHtml = `<div id="alert-parent${product.id}" class="alert-parent mt-product1 large">
+                                <div class="box">
+                                  <div class="b1">
+                                    <div class="b2">
+                                      <a href="/products/detail?id=${product.id}"><img src='/images/product/${image}' alt="image description"></a>
+                                                    ${SPAN_SALE()}
+                                      <ul class="mt-stars">
+                                        <li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li>
+                                      </ul>
+                                      <ul class="links">
+                                        <li><a id="addToCartBtn" href="#" onclick="handleAddToCart(event,${product.id},'${product.name}',${product.price},'${image}')"><i class="icon-handbag"></i><span>Add to Cart</span></a></li>
+                                        <li><a href="#"><i class="icomoon icon-heart-empty"></i></a></li>
+                                        <li><a href="#"><i class="icomoon icon-exchange"></i></a></li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="txt">
+                                  <strong class="title"><a href="#">${product.name}</a></strong>
+                                  <span class="price"><span> ${formatCurrency(product.price)}</span></span>
+                                </div>
+                              </div>
+              `;
+
+              imagePromises.push(
+                imagePromise.then(() => {
+                  tabsSlider.insertAdjacentHTML('beforeend', productHtml);
+                })
+              );
+            }
+          });
+
+      });
+
+      return Promise.all(imagePromises);
+    })
+    .then(() => {
+      // All images have been loaded and HTML is rendered correctly
+    })
+    .catch(error => {
+      // Handle any errors that occurred during the fetch requests or rendering
+      console.error(error);
+    });
+}
+
+</script>
+
+
+
+<!-- include the site stylesheet -->
+
+<link rel="stylesheet" th:href=@{/css/main.css}><!-- main.css tren responsive -->
+<link rel="stylesheet" th:href=@{/css/responsive.css}>
+</body>
+</html>

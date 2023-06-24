@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout">
+<head>
+  <!-- set the encoding of your site -->
+  <meta charset="utf-8">
+  <!-- set the viewport width and initial-scale on mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JAVA Nhom 11</title>
+  <!-- include the site stylesheet -->
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900,900italic%7cMontserrat:400,700%7cOxygen:400,300,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" th:href=@{/css/bootstrap.css}>
+  <link rel="stylesheet" th:href=@{/css/animate.css}>
+  <link rel="stylesheet" th:href=@{/css/icon-fonts.css}>
+
+  <!-- include jQuery -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script th:src=@{/js/jquery.js}></script>
+  <script th:src=@{/js/plugins.js}></script>
+
+  <script th:src=@{/js/jquery.main.js}></script>
+
+
+  <!-- include the site stylesheet -->
+
+  <link rel="stylesheet" th:href=@{/css/main.css}><!-- main.css tren responsive -->
+  <link rel="stylesheet" th:href=@{/css/responsive.css}>
+
+  <!-- action -->
+  <script th:src=@{/js/action/login.js}></script>
+  <script th:src=@{/js/action/authen.js}></script>
+  <script th:src=@{/js/action/register.js}></script>
+  <script th:src=@{/js/action/cart.js}></script>
+  <script th:src=@{/js/action/help.js}></script>
+
+
+
+
+</head>
+<body>
+<!-- main container of all the page elements -->
+<div id="wrapper">
+  <!-- Page Loader -->
+  <div id="pre-loader" class="loader-container">
+    <div class="loader">
+      <img  id="cart-position" th:src=@{/images/svg/rings.svg} alt="loader">
+    </div>
+  </div>
+
+
+  <!-- W1 start here -->
+  <div class="w1">
+    <!-- mt header style4 start here -->
+    <header id="mt-header" class="style4">
+      <!-- mt bottom bar start here -->
+      <div class="mt-bottom-bar">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-12">
+              <!-- mt logo start here -->
+              <div class="mt-logo"><a href="/"><img  th:src="@{/images/mt-logo.png}" alt="schon"></a></div>
+              <!-- mt icon list start here -->
+              <div th:replace="~{sublayout/iconlist.html}"></div><!-- mt icon list end here -->
+              <!-- navigation start here -->
+              <div  th:replace="~{sublayout/navigation.html}"  ></div><!-- navigation end here -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- mt bottom bar end here -->
+      <span class="mt-side-over"></span>
+    </header><!-- mt header style4 end here -->
+    <!-- mt side menu start here -->
+    <div th:replace="~{sublayout/user.html}"></div><!--mt side menu end here-->
+    <!-- mt search popup start here -->
+    <div th:replace="~{sublayout/searchpopup.html}"></div><!-- mt search popup end here -->
+    <!-- mt main start here -->
+    <div th:replace="~{:: content}"></div><!-- mt main end here -->
+
+    <!-- footer of the Page -->
+    <footer id="mt-footer" class="style1 wow fadeInUp" data-wow-delay="0.4s">
+      <!-- Footer Holder of the Page -->
+      <div class="footer-holder dark">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3 mt-paddingbottomsm">
+              <!-- F Widget About of the Page -->
+              <div class="f-widget-about">
+                <div class="logo">
+                  <a href="index.html"><img th:src="@{/images/logo.png}" alt="Schon"></a>
+                </div>
+                <p>Đồ án lập trình java web - GVHD: </p>
+                <!-- Social Network of the Page -->
+                <ul class="list-unstyled social-network">
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                  <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                  <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
+                </ul>
+                <!-- Social Network of the Page end -->
+              </div>
+              <!-- F Widget About of the Page end -->
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 mt-paddingbottomsm">
+              <div class="f-widget-news">
+                <h3 class="f-widget-heading">NHÓM 11</h3>
+                <div class="news-articles">
+                  <div class="news-column">
+                    <i class="fa fa-twitter"></i>
+                    <div class="txt-box">
+                      <p> Nguyễn Xuân Toản <a href="#"> & </a> Trương Ngô Mai Thảo <br> <a href="#"></a></p>
+                    </div>
+                  </div>
+                  <div class="news-column">
+                    <i class="fa fa-twitter"></i>
+                    <div class="txt-box">
+                      <p> Nguyễn Hoàng Khôi <a href="#"> & </a> Nguyễn Thành Đô <br> <a href="#"></a></p>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 mt-paddingbottomxs">
+              <!-- Footer Tabs of the Page -->
+              <div class="f-widget-tabs">
+                <h3 class="f-widget-heading">Sản Phẩm Nội Thất</h3>
+                <ul class="list-unstyled tabs product-tags">
+                </ul>
+              </div>
+              <!-- Footer Tabs of the Page -->
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 text-right">
+              <!-- F Widget About of the Page -->
+              <div class="f-widget-about">
+                <h3 class="f-widget-heading">Information</h3>
+                <ul class="list-unstyled address-list align-right">
+                  <li><i class="fa fa-map-marker"></i><address>475A Điện Biên Phủ, Phường 25, Bình Thạnh, HCM <br>HUTECH UNIVERSITY</address></li>
+                  <li><i class="fa fa-phone"></i><a href="tel:15553332211">+84 988 256 956</a></li>
+                  <li><i class="fa fa-envelope-o"></i><a href="mailto:&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#110;&#046;&#099;&#104;&#097;&#105;&#114;">&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#110;&#046;&#099;&#104;&#097;&#105;&#114;</a></li>
+                </ul>
+              </div>
+              <!-- F Widget About of the Page end -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer Holder of the Page end -->
+      <!-- Footer Area of the Page -->
+      <div class="footer-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <p>© <a th:href="@{/}">schön.</a> - All rights Reserved</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 text-right">
+              <div class="bank-card">
+                <img th:src="@{/images/bank-card.png}"  alt="bank-card">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer Area of the Page end -->
+    </footer><!-- footer of the Page end -->
+    <!-- W1 end here -->
+  </div>
+  <span id="back-top" class="fa fa-arrow-up"></span>
+</div>
+
+
+</body>
+
+<!-- include the site stylesheet -->
+<script th:inline="javascript">
+  fetch(`http://localhost:9999/categories`)
+    .then(response => response.json())
+    .then(categories => {
+      var html = categories.map(category => {
+        return `<li><a href="#">${category.name}</a></li>`;
+      }).join('');
+
+      var ul = document.querySelector('ul.categories-ul');
+      var tags = document.querySelector('ul.product-tags');
+
+      ul.innerHTML += html;
+      tags.innerHTML += html;
+
+
+    })
+    .catch(error => {
+      console.log(error);
+    });
+</script>
+
+
+<!-- include jQuery -->
+
+<link rel="stylesheet" th:href=@{/css/main.css}>
+<!-- include the site stylesheet -->
+<link rel="stylesheet" th:href=@{/css/responsive.css}>
+</html>

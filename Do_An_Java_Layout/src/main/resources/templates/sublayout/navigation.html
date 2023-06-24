@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<nav id="nav">
+  <ul>
+    <li>
+      <a class="" href="/">HOME</i></a>
+<!--      <div class="s-drop">-->
+<!--        <ul>-->
+<!--        </ul>-->
+<!--      </div>-->
+    </li>
+    <li class="drop">
+      <a href="product-grid-view.html">PRODUCTS <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+      <!-- mt dropmenu start here -->
+      <div th:replace="~{sublayout/dropmenu.html}"></div>
+      <!-- mt dropmenu end here -->
+      <span class="mt-mdropover"></span>
+    </li>
+    <li class="admin-menu">
+      <div id="phutcuoi">
+        <a class="drop-link" href="blog-right-sidebar.html">ADMIN <i class="fa fa-angle-down hidden-lg hidden-md" aria-hidden="true"></i></a>
+        <div class="s-drop">
+          <ul>
+            <li><a th:href=@{/admin/products/list}>DANH SÁCH SẢN PHẨM</a></li>
+            <li><a th:href=@{/admin/nhanvien/list}>DANH SÁCH NHÂN VIÊN</a></li>
+            <li><a th:href=@{/admin/categories/list}>DANH SÁCH CATEGORIES</a></li>
+            <li><a th:href=@{/admin/orders/list}>DANH SÁCH ĐƠN HÀNG</a></li>
+
+          </ul>
+        </div>
+      </div>
+
+    </li>
+<!--    <li class="drop">-->
+<!--      <a href="#">PAGES <i class="fa fa-angle-down" aria-hidden="true"></i></a>-->
+<!--      &lt;!&ndash; mt dropmenu start here &ndash;&gt;-->
+<!--      <div th:replace="~{sublayout/dropmenu.html}"></div>&lt;!&ndash; mt dropmenu end here &ndash;&gt;-->
+<!--      <span class="mt-mdropover"></span>-->
+<!--    </li>-->
+  </ul>
+</nav>
+</html>
+
